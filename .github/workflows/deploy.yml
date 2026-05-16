@@ -1,0 +1,25 @@
+name: Build and Push Frontend to ACR
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Login to Azure Container Registry
+        uses: azure/docker-login@v1
+        with:
+          login-server: ${{ secrets.ACR_LOGIN_SERVER }}
+          username: ${{ secrets.ACR_USERNAME }}
+          password: ${{ secrets.ACR_PASSWORD }}
+
+      - name: Build and Push Docker Image
+        run: |
+          # Lưu ý: Đặt tên image là frontend để phân biệt với backend
+          docker build -t ${{ secrets.ACR_LOGIN_SERVER }}/taskmanager-frontend:latest .
+          docker push ${{ secrets.ACR_LOGIN_SERVER }}/taskmanager-frontend:latest
