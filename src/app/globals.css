@@ -1,35 +1,155 @@
-/* Global Styles */
-:root {
-  --primary-color: #007bff;
-  --secondary-color: #6c757d;
-  --success-color: #28a745;
-  --danger-color: #dc3545;
-  --warning-color: #ffc107;
-  --border-radius: 8px;
-  --transition: all 0.3s ease;
-}
+@import "tailwindcss";
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
+/* Notion Style - Clean Minimal Design */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  background-color: #ffffff;
+  color: #37352f;
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f5f5f5;
 }
 
+/* Styling cho text elements */
+h1, h2, h3, h4, h5, h6 {
+  color: #000000;
+  font-weight: 700;
+  font-family: 'Plus Jakarta Sans', inherit;
+}
+
+p, span, li {
+  color: #37352f;
+  font-family: 'Plus Jakarta Sans', inherit;
+}
+
+/* Styling cho inputs */
+input, textarea, select {
+  background-color: #ffffff;
+  border: 1px solid #d3d3d3;
+  color: #37352f;
+  font-family: 'Plus Jakarta Sans', inherit;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+input::placeholder, textarea::placeholder {
+  color: #b8b7b0;
+}
+
+input:focus, textarea:focus, select:focus {
+  outline: none;
+  border-color: #37352f;
+  box-shadow: 0 0 0 2px rgba(55, 53, 47, 0.08);
+  background-color: #ffffff;
+}
+
+/* Styling cho buttons */
+button {
+  font-family: 'Plus Jakarta Sans', inherit;
+  cursor: pointer;
+}
+
+/* Custom Scrollbar - Light theme */
+.custom-scrollbar::-webkit-scrollbar { 
+  width: 6px; 
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track { 
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb { 
+  background: rgba(0, 0, 0, 0.15);
+  border-radius: 3px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover { 
+  background: rgba(0, 0, 0, 0.25);
+}
+
+/* Selection color */
+::selection {
+  background-color: rgba(55, 53, 47, 0.15);
+  color: #37352f;
+}
+
+/* Links styling */
 a {
-  color: var(--primary-color);
+  color: #0084ff;
   text-decoration: none;
-  transition: var(--transition);
+  transition: color 0.2s ease;
 }
 
 a:hover {
+  color: #0073e6;
   text-decoration: underline;
+}
+
+/* Tables styling */
+table {
+  border-collapse: collapse;
+}
+
+th, td {
+  border-color: #e5e5e5;
+  color: #37352f;
+}
+
+th {
+  background-color: #f5f5f5;
+  color: #37352f;
+  font-weight: 600;
+}
+
+/* ==========================================================================
+   HIỆU ỨNG NỀN ĐỘNG NÉT CAO (SHARP MOTION BACKGROUND)
+   ========================================================================== */
+
+/* Lưới chấm bi rõ nét, di chuyển mượt mà vô tận */
+@keyframes sharpMovingGrid {
+  0% { background-position: 0 0; }
+  100% { background-position: 32px 32px; }
+}
+
+.notion-sharp-animated-bg {
+  /* Tăng độ đậm hạt chấm lên màu #cbd5e1 để nhìn rõ nét */
+  background-image: radial-gradient(#cbd5e1 2px, transparent 2px);
+  background-size: 32px 32px;
+  animation: sharpMovingGrid 8s linear infinite; /* Đẩy tốc độ nhanh lên chút cho rõ chuyển động */
+}
+
+/* Kiểu bay 1: Lên xuống + Lắc nhẹ */
+@keyframes floatStyle1 {
+  0%, 100% { transform: translateY(0px) rotate(0deg); }
+  50% { transform: translateY(-35px) rotate(15deg); }
+}
+
+/* Kiểu bay 2: Trôi chéo trái phải */
+@keyframes floatStyle2 {
+  0%, 100% { transform: translateX(0px) translateY(0px) rotate(0deg); }
+  50% { transform: translateX(30px) translateY(-25px) rotate(-15deg); }
+}
+
+/* Kiểu bay 3: Tự xoay tròn chậm rãi tại chỗ */
+@keyframes infiniteRotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* Gán class animation điều chỉnh tốc độ */
+.animate-notion-float-1 { animation: floatStyle1 10s ease-in-out infinite; }
+.animate-notion-float-2 { animation: floatStyle2 14s ease-in-out infinite; }
+.animate-notion-float-3 { animation: floatStyle1 18s ease-in-out infinite; animation-delay: 2s; }
+.animate-notion-rotate-slow { animation: infiniteRotate 30s linear infinite; }
+
+/* Ép buộc ẩn toàn bộ chuột hệ thống trên Desktop kể cả khi hover vào input/button */
+@media (min-width: 1024px) {
+  .hide-system-cursor,
+  .hide-system-cursor *,
+  .hide-system-cursor input,
+  .hide-system-cursor button,
+  .hide-system-cursor a {
+    cursor: none !important;
+  }
 }
