@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from 'react';
-import { BookOpen, Plus } from 'lucide-react';
+import { Plus } from 'lucide-react';
+import Logo from '@/components/Logo';
 
 export default function AuthWrapper({ children, title, subtitle }) {
     const [mouseOffset, setMouseOffset] = useState({ x: 0, y: 0 });
@@ -109,8 +110,8 @@ export default function AuthWrapper({ children, title, subtitle }) {
             <div style={{ transform: `translate(${mouseOffset.x * -0.8}px, ${mouseOffset.y * 1.2}px)` }} className="absolute top-[50%] left-[8%] text-gray-400/60 pointer-events-none transition-transform duration-300 ease-out"><Plus size={24} strokeWidth={2} /></div>
             <div className="relative z-10 w-full max-w-[400px] bg-white border border-[#E1DFDD] rounded-2xl shadow-[0_20px_50px_rgba(55,53,47,0.08)] p-8 sm:p-10 transform transition-all duration-500 hover:shadow-[0_24px_60px_rgba(55,53,47,0.12)]">
                 <div className="mb-8 flex flex-col items-center text-center">
-                    <div className="mb-5 w-12 h-12 rounded-xl bg-[#F7F6F3] border border-[#E1DFDD] flex items-center justify-center text-[#37352F] shadow-sm transform hover:rotate-12 transition-transform duration-300 cursor-pointer">
-                        <BookOpen strokeWidth={1.5} size={24} />
+                    <div className="mb-5">
+                        <Logo size="large" />
                     </div>
                     <h1 className="text-2xl font-bold text-[#37352F] tracking-tight mb-2">
                         {title}

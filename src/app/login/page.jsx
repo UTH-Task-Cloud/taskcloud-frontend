@@ -32,8 +32,8 @@ export default function LoginPage() {
     return (
         <AuthWrapper title="Đăng nhập" subtitle="Chào mừng bạn quay lại TaskManager">
             {errorMsg && (
-                <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg flex items-start gap-2">
-                    <span className="mt-0.5">⚠️</span> <span>{errorMsg}</span>
+                <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg">
+                    {errorMsg}
                 </div>
             )}
 

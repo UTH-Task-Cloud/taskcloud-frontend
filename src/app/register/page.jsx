@@ -21,7 +21,7 @@ export default function RegisterPage() {
 
         try {
             await api.post('/api/auth/register', formData);
-            setSuccessMsg('✅ Đăng ký thành công! Chuyển hướng...');
+            setSuccessMsg('');
             setTimeout(() => router.push('/login'), 2000);
         } catch (error) {
             setErrorMsg(error.response?.data?.error || error.response?.data || "Có lỗi xảy ra!");
@@ -32,13 +32,13 @@ export default function RegisterPage() {
     return (
         <AuthWrapper title="Tạo tài khoản" subtitle="Bắt đầu quản lý công việc của bạn">
             {errorMsg && (
-                <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg flex items-start gap-2">
-                    <span className="mt-0.5">⚠️</span> <span>{errorMsg}</span>
+                <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg">
+                    {errorMsg}
                 </div>
             )}
             {successMsg && (
                 <div className="mb-6 p-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-lg">
-                    {successMsg}
+                    Đăng ký thành công! Chuyển hướng...
                 </div>
             )}
 

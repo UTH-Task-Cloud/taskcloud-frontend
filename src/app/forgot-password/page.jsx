@@ -19,7 +19,7 @@ export default function ForgotPasswordPage() {
 
         try {
             await api.post('/api/auth/forgot-password', { email });
-            setMessage('✅ Yêu cầu thành công! Vui lòng kiểm tra Console Backend để lấy mã khôi phục.');
+            setMessage('');
         } catch (error) {
             setErrorMsg(error.response?.data?.error || error.response?.data || "Email không tồn tại.");
         } finally {
@@ -38,13 +38,13 @@ export default function ForgotPasswordPage() {
 
             <div className="pt-4">
                 {errorMsg && (
-                    <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg flex items-start gap-2">
-                        <span className="mt-0.5">⚠️</span> <span>{errorMsg}</span>
+                    <div className="mb-6 p-3 bg-red-50 border border-red-200 text-red-700 text-sm rounded-lg">
+                        {errorMsg}
                     </div>
                 )}
                 {message && (
                     <div className="mb-6 p-3 bg-green-50 border border-green-200 text-green-700 text-sm rounded-lg">
-                        {message}
+                        Yêu cầu thành công! Vui lòng kiểm tra Console Backend để lấy mã khôi phục.
                     </div>
                 )}
 
